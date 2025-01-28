@@ -15,11 +15,19 @@ async function obtenerClima() {
                 </tr>
             `;
         } else {
-            climaTbody.innerHTML = `<tr><td colspan="4">No se pudo obtener el clima.</td></tr>`;
+            climaTbody.innerHTML = `
+                <tr>
+                    <td colspan="4">No se pudo obtener el clima.</td>
+                </tr>
+            `;
         }
     } catch (error) {
         console.error('Error al obtener el clima:', error);
-        climaTbody.innerHTML = `<tr><td colspan="4">Error al obtener los datos del clima.</td></tr>`;
+        climaTbody.innerHTML = `
+            <tr>
+                <td colspan="4">Error al obtener los datos del clima.</td>
+            </tr>
+        `;
     }
 }
 
