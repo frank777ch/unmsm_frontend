@@ -78,7 +78,31 @@ footer {
     margin-bottom: 10px;
 }
 
-#clima p {
-    font-size: 1rem;
-    margin: 5px 0;
+#clima table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+#clima th {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+#clima td {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    text-align: center;
+}
+
+#clima tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#clima tr:hover {
+    background-color: #ddd;
 }

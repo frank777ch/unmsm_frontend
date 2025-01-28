@@ -21,11 +21,24 @@
         <p>FISI - UNMSM | Arquitectura de Software 2025-0</p>
     </footer>
 
-    <!-- Contenedor para mostrar el clima -->
     <div id="clima">
         <h2>Clima Actual</h2>
-        <p>Cargando los datos del clima...</p>
-    </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ciudad</th>
+                    <th>Temperatura</th>
+                    <th>Sensación Térmica</th>
+                    <th>Clima</th>
+                </tr>
+            </thead>
+            <tbody id="clima-datos">
+                <tr>
+                    <td colspan="4">Cargando los datos del clima...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>    
 
     <script src="clima.js"></script>
 </body>
