@@ -2,7 +2,7 @@ async function obtenerClima() {
     const climaDiv = document.getElementById('clima');
 
     try {
-        const response = await fetch('https://<TU_DOMINIO_BACKEND>.onrender.com/api/clima');
+        const response = await fetch('https://unmsm.onrender.com/api/clima');
         const data = await response.json();
 
         if (data) {
