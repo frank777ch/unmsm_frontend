@@ -8,9 +8,11 @@ const pronouns = [
   ];
   
   let cards = [];
+  let matchedPairs = 0;
   
   function shuffleCards() {
-    const shuffled = [...pronouns, ...pronouns.map(p => ({ ...p, isTranslation: true }))]
+    matchedPairs = 0;
+    const shuffled = [...pronouns, ...pronouns.map(p => ({ word: p.translation, translation: p.word }))]
       .sort(() => Math.random() - 0.5);
     cards = shuffled;
     renderGame();
@@ -44,11 +46,16 @@ const pronouns = [
   function checkMatch() {
     const [first, second] = flippedCards;
     if (
-      cards[first.index].word === cards[second.index].word ||
-      (cards[first.index].translation && cards[first.index].translation === cards[second.index].word)
+      (cards[first.index].word === cards[second.index].translation) ||
+      (cards[first.index].translation === cards[second.index].word)
     ) {
       first.cardElement.classList.add("matched");
       second.cardElement.classList.add("matched");
+      matchedPairs++;
+  
+      if (matchedPairs === pronouns.length) {
+        setTimeout(shuffleCards, 1500);
+      }
     } else {
       first.cardElement.textContent = "";
       second.cardElement.textContent = "";
