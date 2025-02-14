@@ -9,13 +9,17 @@ const pronouns = [
   
   let cards = [];
   let matchedPairs = 0;
+  let flippedCards = [];
   
   function shuffleCards() {
     matchedPairs = 0;
-    const shuffled = [...pronouns.map(p => ({ word: p.word, pair: p.translation })),
-                      ...pronouns.map(p => ({ word: p.translation, pair: p.word }))]
-      .sort(() => Math.random() - 0.5);
-    cards = shuffled;
+    flippedCards = [];
+    const pairs = pronouns.flatMap(p => [
+      { word: p.word, pair: p.translation, matched: false },
+      { word: p.translation, pair: p.word, matched: false }
+    ]);
+    
+    cards = pairs.sort(() => Math.random() - 0.5);
     renderGame();
   }
   
@@ -32,10 +36,8 @@ const pronouns = [
     });
   }
   
-  let flippedCards = [];
-  
   function flipCard(cardElement, index) {
-    if (flippedCards.length < 2 && !cardElement.classList.contains("matched")) {
+    if (flippedCards.length < 2 && !cards[index].matched) {
       cardElement.textContent = cards[index].word;
       flippedCards.push({ cardElement, index });
     }
@@ -46,19 +48,24 @@ const pronouns = [
   
   function checkMatch() {
     const [first, second] = flippedCards;
+    
     if (cards[first.index].pair === cards[second.index].word) {
       first.cardElement.classList.add("matched");
       second.cardElement.classList.add("matched");
+      cards[first.index].matched = true;
+      cards[second.index].matched = true;
       matchedPairs++;
-  
-      if (matchedPairs === pronouns.length) {
-        setTimeout(shuffleCards, 1500);
-      }
     } else {
-      first.cardElement.textContent = "";
-      second.cardElement.textContent = "";
+      setTimeout(() => {
+        first.cardElement.textContent = "";
+        second.cardElement.textContent = "";
+      }, 500);
     }
     flippedCards = [];
+    
+    if (matchedPairs === pronouns.length) {
+      setTimeout(shuffleCards, 1500);
+    }
   }
   
-  document.addEventListener("DOMContentLoaded", shuffleCards);  
+  document.addEventListener("DOMContentLoaded", shuffleCards);
