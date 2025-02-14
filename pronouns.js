@@ -1,7 +1,8 @@
 const pronouns = [
+    { word: "I", translation: "Yo" },
     { word: "He", translation: "Él" },
     { word: "She", translation: "Ella" },
-    { word: "It", translation: "Eso/Ella/Él" },
+    { word: "It", translation: "Eso" },
     { word: "They", translation: "Ellos/Ellas" },
     { word: "We", translation: "Nosotros/Nosotras" },
     { word: "You", translation: "Tú/Ustedes" }
@@ -68,4 +69,4 @@ const pronouns = [
     }
   }
   
-  document.addEventListener("DOMContentLoaded", shuffleCards);
+  document.addEventListener("DOMContentLoaded", shuffleCards);  
