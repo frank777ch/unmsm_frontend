@@ -3,8 +3,8 @@ const pronouns = [
     { word: "He", translation: "Él" },
     { word: "She", translation: "Ella" },
     { word: "It", translation: "Eso" },
-    { word: "They", translation: "Ellos/Ellas" },
-    { word: "We", translation: "Nosotros/Nosotras" },
+    { word: "They", translation: "Ellos/as" },
+    { word: "We", translation: "Nosotros/as" },
     { word: "You", translation: "Tú/Ustedes" }
   ];
   
@@ -64,7 +64,7 @@ const pronouns = [
     }
     flippedCards = [];
     
-    if (matchedPairs === pronouns.length) {
+    if (matchedPairs === pronouns.length * 2 / 2) {
       setTimeout(shuffleCards, 1500);
     }
   }
